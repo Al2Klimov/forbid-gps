@@ -25,6 +25,11 @@ if (!defined("ABSPATH")) {
 // Unless commented otherwise, the used functions require PHP 4.x or even 3.x.
 // __ requires WordPress 2.1.
 
+function forbid_gps_remove_prefix($s)
+{
+    return str_replace("GPS", "", $s);
+}
+
 function forbid_gps_handle_upload_prefilter($file)
 {
     if (strpos($file["type"], "image/") !== 0) {
@@ -64,7 +69,7 @@ function forbid_gps_handle_upload_prefilter($file)
         $file["error"] = sprintf(
             /* translators: keep "%s" as-is, see https://php.net/sprintf */
             __("Image contains GPS data: %s", "forbid-gps"),
-            implode(" ", $forbidden),
+            implode(" ", array_map("forbid_gps_remove_prefix", $forbidden)),
         );
     }
 
