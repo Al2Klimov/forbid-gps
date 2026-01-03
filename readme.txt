@@ -1,7 +1,7 @@
 === Forbid GPS ===
 Contributors: al2klimov
 Donate link: https://al2klimov.de/donate
-Tags: gps, geo, exif, photo, image, upload
+Tags: gps, geo, exif, photo, image
 Requires at least: 2.9
 Tested up to: 6.9
 Stable tag: 1.0

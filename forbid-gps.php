@@ -14,6 +14,11 @@
  * Text Domain:         forbid-gps
  */
 
+if (!defined("ABSPATH")) {
+    // Exit if accessed directly
+    exit();
+}
+
 // Notes on the requirements above:
 //
 // Auto-formatting forces [] by default which requires PHP 5.4.
@@ -57,6 +62,7 @@ function forbid_gps_handle_upload_prefilter($file)
 
     if (!empty($forbidden)) {
         $file["error"] = sprintf(
+            /* translators: keep "%s" as-is, see https://php.net/sprintf */
             __("Image contains GPS data: %s", "forbid-gps"),
             implode(" ", $forbidden),
         );
