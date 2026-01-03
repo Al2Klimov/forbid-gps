@@ -3,8 +3,8 @@
 /*
  * Plugin Name:         Forbid GPS
  * Plugin URI:          https://github.com/Al2Klimov/forbid-gps
- * Description:         Prevents photos containing geographic location data from being uploaded.
- * Version:             1.0
+ * Description:         Prevents photos containing geographic location data from being uploaded (as long as the plugin is active).
+ * Version:             1.1
  * Requires at least:   2.9
  * Requires PHP:        5.4
  * Author:              Alexander A. Klimov
@@ -14,11 +14,21 @@
  * Text Domain:         forbid-gps
  */
 
+if (!defined("ABSPATH")) {
+    // Exit if accessed directly
+    exit();
+}
+
 // Notes on the requirements above:
 //
 // Auto-formatting forces [] by default which requires PHP 5.4.
 // Unless commented otherwise, the used functions require PHP 4.x or even 3.x.
 // __ requires WordPress 2.1.
+
+function forbid_gps_remove_prefix($s)
+{
+    return str_replace("GPS", "", $s);
+}
 
 function forbid_gps_handle_upload_prefilter($file)
 {
@@ -57,8 +67,9 @@ function forbid_gps_handle_upload_prefilter($file)
 
     if (!empty($forbidden)) {
         $file["error"] = sprintf(
+            /* translators: keep "%s" as-is, see https://php.net/sprintf */
             __("Image contains GPS data: %s", "forbid-gps"),
-            implode(" ", $forbidden),
+            implode(" ", array_map("forbid_gps_remove_prefix", $forbidden)),
         );
     }
 
