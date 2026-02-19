@@ -6,7 +6,7 @@
  * Description:         Prevents photos containing geographic location data from being uploaded (as long as the plugin is active).
  * Version:             1.1
  * Requires at least:   2.9
- * Requires PHP:        5.4
+ * Requires PHP:        7.3
  * Author:              Alexander A. Klimov
  * Author URI:          https://github.com/Al2Klimov
  * License:             GPL v2 or later
@@ -21,7 +21,7 @@ if (!defined("ABSPATH")) {
 
 // Notes on the requirements above:
 //
-// Auto-formatting forces [] by default which requires PHP 5.4.
+// Auto-formatting forces [] by default which requires PHP 5.4 and trailing commas which require PHP 7.3.
 // Unless commented otherwise, the used functions require PHP 4.x or even 3.x.
 // __ requires WordPress 2.1.
 
