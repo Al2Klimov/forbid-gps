@@ -39,7 +39,7 @@ function forbid_gps_handle_upload_prefilter($file)
     if (!function_exists("exif_read_data")) {
         $file["error"] = __(
             "Image may contain GPS data, can't inspect it, missing the exif extension for PHP",
-            "forbid-gps",
+            "forbid-gps"
         );
 
         return $file;
@@ -69,7 +69,7 @@ function forbid_gps_handle_upload_prefilter($file)
         $file["error"] = sprintf(
             /* translators: keep "%s" as-is, see https://php.net/sprintf */
             __("Image contains GPS data: %s", "forbid-gps"),
-            implode(" ", array_map("forbid_gps_remove_prefix", $forbidden)),
+            implode(" ", array_map("forbid_gps_remove_prefix", $forbidden))
         );
     }
 
