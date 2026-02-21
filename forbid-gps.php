@@ -4,7 +4,7 @@
  * Plugin Name:         Forbid GPS
  * Plugin URI:          https://github.com/Al2Klimov/forbid-gps
  * Description:         Prevents photos containing geographic location data from being uploaded (as long as the plugin is active).
- * Version:             1.1
+ * Version:             1.2
  * Requires at least:   2.9
  * Requires PHP:        7.3
  * Author:              Alexander A. Klimov
